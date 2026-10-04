@@ -1,0 +1,60 @@
+---
+// Port of pulse-purse-fe's LogoMark: a milled-edge coin with a P cut through it.
+// Inherits text colour via currentColor, so it works on any background.
+interface Props {
+  size?: number; // px
+  wordmark?: boolean;
+  class?: string;
+}
+const { size = 36, wordmark = false, class: className = '' } = Astro.props;
+const maskId = `logo-mask-${Math.random().toString(36).slice(2, 9)}`;
+const TICKS = Array.from({ length: 48 }, (_, i) => (i * Math.PI) / 24);
+---
+<span class:list={['logo', className]}>
+  <svg viewBox="8 8 84 84" role="img" aria-label="Pulse Purse" width={size} height={size} class="logo-mark">
+    <mask id={maskId}>
+      <rect width="100" height="100" fill="#fff" />
+      {TICKS.map((a) => (
+        <line
+          x1={50 + 31 * Math.cos(a)}
+          y1={50 + 31 * Math.sin(a)}
+          x2={50 + 35.5 * Math.cos(a)}
+          y2={50 + 35.5 * Math.sin(a)}
+          stroke="#000"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+      ))}
+      <circle cx="50" cy="50" r="26" fill="none" stroke="#000" stroke-width="2" />
+      <path
+        d="M41 68 V32 H53 a10.5 10.5 0 0 1 0 21 H41"
+        fill="none"
+        stroke="#000"
+        stroke-width="10"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        transform="translate(50 50) scale(0.6) translate(-52 -50)"
+      />
+    </mask>
+    <circle cx="50" cy="50" r="40" fill="currentColor" mask={`url(#${maskId})`} />
+  </svg>
+  {wordmark && <span class="logo-word">Pulse Purse</span>}
+</span>
+
+<style>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--foreground);
+  }
+  .logo-mark {
+    flex-shrink: 0;
+  }
+  .logo-word {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+</style>

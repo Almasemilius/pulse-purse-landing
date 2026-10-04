@@ -1,0 +1,198 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import AppPreview from '../components/AppPreview.astro';
+import { SIGNUP_URL } from '../lib/site';
+
+const features = [
+  {
+    title: 'Expenses & income',
+    body: "Log what comes in and what goes out. Every entry lands in one ledger, not three different apps.",
+  },
+  {
+    title: 'Budgets that hold you to them',
+    body: 'Set a limit per category and watch it in real time instead of finding out at the end of the month.',
+  },
+  {
+    title: 'Goals & plans',
+    body: 'Saving for something specific? Track progress against a target, not just a vague intention.',
+  },
+  {
+    title: 'Projects',
+    body: 'Group income and costs that belong together — a rental, a side hustle, a trip — and see each one on its own.',
+  },
+];
+
+const steps = [
+  { n: '01', title: 'Record what moves', body: 'Add an expense or income in seconds, by hand or from your own categories.' },
+  { n: '02', title: 'Set the shape of your money', body: 'Budgets, goals and projects turn raw entries into something you can actually read.' },
+  { n: '03', title: 'See the pattern', body: 'One dashboard shows the direction things are moving — before it becomes a problem.' },
+];
+---
+<Layout
+  title="Pulse Purse — know where your money actually goes"
+  description="Pulse Purse is a personal finance manager for tracking expenses, income, budgets and goals in one clear ledger. Free to start."
+>
+  <Header />
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow anim-rise">Personal finance, kept honest</p>
+        <h1 class="anim-rise" style="--i:1">See where your money actually goes.</h1>
+        <p class="lede anim-rise" style="--i:2">
+          Pulse Purse tracks your income, expenses, budgets and goals in one ledger
+          that's built to be read, not decoded.
+        </p>
+        <div class="hero-cta anim-rise" style="--i:3">
+          <a href={SIGNUP_URL} class="btn btn-primary">Start tracking — free</a>
+          <a href="#how-it-works" class="btn btn-ghost">See how it works</a>
+        </div>
+      </div>
+    </section>
+
+    <AppPreview />
+
+    <section id="features" class="features">
+      <div class="container">
+        <h2>Everything your money needs, nothing it doesn't</h2>
+        <div class="feature-grid">
+          {features.map((f, i) => (
+            <div class="feature-card anim-rise" style={`--i:${i}`}>
+              <h3>{f.title}</h3>
+              <p class="muted">{f.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="how-it-works" class="how">
+      <div class="container">
+        <h2>How it works</h2>
+        <div class="steps">
+          {steps.map((s) => (
+            <div class="step">
+              <span class="step-n num">{s.n}</span>
+              <h3>{s.title}</h3>
+              <p class="muted">{s.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-inner">
+        <h2>Your money, in plain sight.</h2>
+        <p class="muted">Free to start. No spreadsheet required.</p>
+        <a href={SIGNUP_URL} class="btn btn-primary">Create your account</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .hero {
+    padding-block: 5rem 4rem;
+  }
+  .hero-inner {
+    max-width: 680px;
+  }
+  .eyebrow {
+    color: var(--gain);
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.25rem, 5vw, 3.25rem);
+    margin-bottom: 1.25rem;
+  }
+  .lede {
+    font-size: 1.15rem;
+    color: var(--muted-foreground);
+    margin-bottom: 2rem;
+    max-width: 52ch;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .features, .how {
+    padding-block: 4rem;
+    border-top: 1px solid var(--border);
+  }
+  .features h2, .how h2 {
+    font-size: 1.75rem;
+    margin-bottom: 2.5rem;
+    max-width: 30ch;
+  }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .feature-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+  }
+  .feature-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+  }
+  .muted {
+    color: var(--muted-foreground);
+  }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .step-n {
+    display: block;
+    color: var(--gain);
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  .step h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .cta {
+    padding-block: 5rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .cta-inner {
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .cta h2 {
+    font-size: 2rem;
+  }
+  .cta .btn {
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 720px) {
+    .feature-grid, .steps {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

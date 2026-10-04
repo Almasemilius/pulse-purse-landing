@@ -1,0 +1,117 @@
+---
+import fs from 'node:fs';
+
+// Drop real screenshots from the Flutter app into public/screenshots/ with
+// these exact filenames (1080x2340-ish portrait PNGs work best) and they'll
+// replace the placeholder frames automatically on the next build — nothing
+// else to change here.
+const SHOTS = [
+  { file: 'dashboard.png', label: 'Dashboard' },
+  { file: 'income.png', label: 'Income' },
+  { file: 'expenses.png', label: 'Expenses' },
+  { file: 'projects.png', label: 'Projects' },
+] as const;
+
+const shots = SHOTS.map((s) => ({
+  ...s,
+  exists: fs.existsSync(new URL(`../../public/screenshots/${s.file}`, import.meta.url)),
+}));
+---
+<section id="app-preview" class="preview">
+  <div class="container">
+    <h2>See it in action</h2>
+    <div class="phones">
+      {shots.map((s) => (
+        <div class="phone">
+          <div class="phone-screen">
+            {s.exists ? (
+              <img src={`/screenshots/${s.file}`} alt={`Pulse Purse — ${s.label} screen`} loading="lazy" />
+            ) : (
+              <div class="phone-placeholder">
+                <span class="muted">{s.label}</span>
+                <span class="hint">drop screenshots/{s.file}</span>
+              </div>
+            )}
+          </div>
+          <p class="phone-label muted">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .preview {
+    padding-block: 4rem;
+    border-top: 1px solid var(--border);
+  }
+  .preview h2 {
+    font-size: 1.75rem;
+    margin-bottom: 2.5rem;
+    max-width: 30ch;
+  }
+  .phones {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+  }
+  .phone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .phone-screen {
+    width: 100%;
+    aspect-ratio: 9 / 19.5;
+    border-radius: 1.75rem;
+    border: 1px solid var(--border);
+    background: var(--card);
+    overflow: hidden;
+    box-shadow: 0 1px 2px color-mix(in oklab, var(--foreground) 6%, transparent);
+  }
+  .phone-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .phone-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    border: 1px dashed var(--border);
+    border-radius: 1.75rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  .phone-placeholder .hint {
+    font-size: 0.7rem;
+    color: var(--muted-foreground);
+    font-family: ui-monospace, monospace;
+  }
+  .phone-label {
+    font-size: 0.85rem;
+  }
+  .muted {
+    color: var(--muted-foreground);
+  }
+  @media (max-width: 760px) {
+    .phones {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 420px;
+      margin-inline: auto;
+    }
+  }
+  @media (max-width: 420px) {
+    .phones {
+      grid-template-columns: 1fr;
+      max-width: 220px;
+    }
+  }
+</style>

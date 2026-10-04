@@ -1,0 +1,56 @@
+---
+import Logo from './Logo.astro';
+import { SIGNUP_URL, LOGIN_URL } from '../lib/site';
+---
+<header class="site-header">
+  <div class="container row">
+    <a href="/" aria-label="Pulse Purse home">
+      <Logo size={32} wordmark />
+    </a>
+    <nav class="row nav-links">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How it works</a>
+      <a href={LOGIN_URL} class="btn btn-ghost">Log in</a>
+      <a href={SIGNUP_URL} class="btn btn-primary">Sign up free</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in oklab, var(--background) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .row {
+    display: flex;
+    align-items: center;
+  }
+  .container.row {
+    justify-content: space-between;
+    padding-block: 1rem;
+  }
+  .nav-links {
+    gap: 1.75rem;
+  }
+  .nav-links a:not(.btn) {
+    font-size: 0.95rem;
+    text-decoration: none;
+    color: var(--muted-foreground);
+    transition: color 160ms var(--ease-out);
+  }
+  .nav-links a:not(.btn):hover {
+    color: var(--foreground);
+  }
+  @media (max-width: 640px) {
+    .nav-links a:not(.btn) {
+      display: none;
+    }
+    .nav-links {
+      gap: 0.6rem;
+    }
+  }
+</style>

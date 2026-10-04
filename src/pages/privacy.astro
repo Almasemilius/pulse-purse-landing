@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<Layout
+  title="Privacy Policy — Pulse Purse"
+  description="How Pulse Purse handles your data."
+  noindex
+>
+  <Header />
+  <main class="container legal">
+    <h1>Privacy Policy</h1>
+    <p class="muted">
+      This page is a placeholder. Before public signups open, replace this with a real
+      privacy policy covering what data Pulse Purse collects, how it's stored, and users'
+      rights over it — financial data makes this a must, not a nice-to-have.
+    </p>
+  </main>
+  <Footer />
+</Layout>
+<style>
+  .legal { padding-block: 4rem; max-width: 680px; }
+  .legal h1 { margin-bottom: 1.25rem; }
+</style>
