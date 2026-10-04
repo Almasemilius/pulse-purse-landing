@@ -1,9 +1,9 @@
-// Single place to change once the domain + deployed app/API URLs are final.
-// TODO(Almas): swap SITE_URL for the real registered domain, APP_URL for
-// wherever pulse-purse-fe ends up deployed, and API_URL for pulse-purse-be.
-export const SITE_URL = 'https://pulsepurse.com';
-export const APP_URL = 'https://app.pulsepurse.com';
-export const API_URL = 'https://api.pulsepurse.com/api';
+// Single place to change if any of these ever move.
+export const SITE_URL = 'https://pulsepurse.app';
+export const APP_URL = 'https://app.pulsepurse.app';
+// TODO(Almas): confirm this matches pulse-purse-be's actual deployed host —
+// inferred from the app.pulsepurse.app / ppfe naming convention on the VPS.
+export const API_URL = 'https://api.pulsepurse.app/api';
 
 // pulse-purse-fe reads ?view=signup on load to jump straight to the signup form.
 export const SIGNUP_URL = `${APP_URL}/?view=signup`;

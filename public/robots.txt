@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pulsepurse.com/sitemap-index.xml
+Sitemap: https://pulsepurse.app/sitemap-index.xml
