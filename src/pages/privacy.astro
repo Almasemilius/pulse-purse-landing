@@ -6,20 +6,79 @@ import Footer from '../components/Footer.astro';
 <Layout
   title="Privacy Policy — Pulse Purse"
   description="How Pulse Purse handles your data."
-  noindex
 >
   <Header />
   <main class="container legal">
     <h1>Privacy Policy</h1>
-    <p class="muted">
-      This page is a placeholder. Before public signups open, replace this with a real
-      privacy policy covering what data Pulse Purse collects, how it's stored, and users'
-      rights over it — financial data makes this a must, not a nice-to-have.
+    <p class="muted">Last updated: October 2026</p>
+    <p>
+      Pulse Purse ("we", "us") is a personal finance app operated by Crafton Tech. This policy
+      explains what we collect, why, and the choices you have. If anything here is unclear, use
+      the <a href="/contact">contact form</a>.
     </p>
+
+    <h2>What we collect</h2>
+    <ul>
+      <li><strong>Account details:</strong> your name and email address, and a password (stored only as a one-way hash) if you sign up with email. If you sign in with Google or Apple we receive your name and email from them.</li>
+      <li><strong>Phone number:</strong> only if you add one, so we can send payment reminders by SMS.</li>
+      <li><strong>Financial records you enter:</strong> income, expenses, budgets, projects, plans and goals, including amounts, dates, categories, currencies and notes.</li>
+      <li><strong>Preferences:</strong> for example reminder settings. Your default currency and theme are kept on your device.</li>
+      <li><strong>Messages you send us</strong> through the contact form.</li>
+    </ul>
+    <p>We do not collect your location, contacts, photos or bank-account credentials, and we do not connect to your bank.</p>
+
+    <h2>How we use it</h2>
+    <p>
+      To run the app: sign you in, store and show your records, calculate your totals and
+      forecasts, and send the reminders you switch on by email or SMS. We do not sell your data and
+      we do not use it for advertising or tracking across other companies' apps and websites.
+    </p>
+
+    <h2>Who we share it with</h2>
+    <p>
+      Only service providers that help us run Pulse Purse: our hosting provider, our email and SMS
+      delivery providers (they receive your email address or phone number and the reminder text),
+      and Google or Apple when you choose to sign in with them. Records you explicitly share
+      from a project are visible to the people you share them with. We may disclose data if the law
+      requires it.
+    </p>
+
+    <h2>Keeping and deleting your data</h2>
+    <p>
+      We keep your data while your account exists. You can delete your account at any time in the
+      app under <em>Profile &rarr; Delete account</em>. This permanently removes your account and
+      all of your records from our systems. If you used Sign in with Apple, we also tell Apple to
+      revoke the connection. Backups are overwritten on their normal cycle.
+    </p>
+
+    <h2>Your choices</h2>
+    <p>
+      You can view and edit your name, email and phone number in the app, turn reminders off, or
+      delete your account. You can also ask us, through the contact form, for a copy of your data
+      or a correction.
+    </p>
+
+    <h2>Security</h2>
+    <p>
+      Data is sent over encrypted connections and passwords are hashed. No system is perfectly
+      secure, so please use a strong, unique password.
+    </p>
+
+    <h2>Children</h2>
+    <p>Pulse Purse is not intended for children under 13, and we do not knowingly collect their data.</p>
+
+    <h2>Changes</h2>
+    <p>If we change this policy in a meaningful way we will update the date above and, where appropriate, tell you in the app.</p>
+
+    <h2>Contact</h2>
+    <p>Questions or requests: <a href="/contact">pulsepurse.app/contact</a>.</p>
   </main>
   <Footer />
 </Layout>
 <style>
   .legal { padding-block: 4rem; max-width: 680px; }
-  .legal h1 { margin-bottom: 1.25rem; }
+  .legal h1 { margin-bottom: 0.5rem; }
+  .legal h2 { margin-top: 2rem; margin-bottom: 0.5rem; font-size: 1.15rem; }
+  .legal p, .legal li { line-height: 1.65; }
+  .legal ul { padding-left: 1.25rem; }
 </style>
