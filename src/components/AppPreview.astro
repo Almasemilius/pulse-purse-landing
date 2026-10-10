@@ -1,11 +1,10 @@
 ---
-// Real screenshots live in public/screenshots/ — see that folder's README
-// for the exact filenames expected here.
+const BASE = 'https://res.cloudinary.com/do6zpq1dx/image/upload';
 const SHOTS = [
-  { file: 'dashboard.png', label: 'Dashboard' },
-  { file: 'income.png', label: 'Income' },
-  { file: 'expenses.png', label: 'Expenses' },
-  { file: 'projects.png', label: 'Projects' },
+  { src: `${BASE}/v1791647523/IMG_1282_supg1x.png`, label: 'Dashboard' },
+  { src: `${BASE}/v1791647523/IMG_1283_nd2j3j.png`, label: 'Expenses' },
+  { src: `${BASE}/v1791647523/IMG_1284_mqcldf.png`, label: 'Projects' },
+  { src: `${BASE}/v1791647524/IMG_1286_obx3hg.png`, label: 'Categories' },
 ] as const;
 ---
 <section id="app-preview" class="preview">
@@ -15,7 +14,7 @@ const SHOTS = [
       {SHOTS.map((s) => (
         <div class="phone">
           <div class="phone-screen">
-            <img src={`/screenshots/${s.file}`} alt={`Pulse Purse — ${s.label} screen`} loading="lazy" />
+            <img src={s.src} width="1206" height="2622" alt={`Pulse Purse — ${s.label} screen`} loading="lazy" />
           </div>
           <p class="phone-label muted">{s.label}</p>
         </div>
