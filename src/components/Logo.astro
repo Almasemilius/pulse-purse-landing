@@ -56,5 +56,10 @@ const TICKS = Array.from({ length: 48 }, (_, i) => (i * Math.PI) / 24);
     font-size: 1.25rem;
     line-height: 1;
     letter-spacing: -0.01em;
+    white-space: nowrap;
+  }
+  @media (max-width: 420px) {
+    .logo { gap: 0.45rem; }
+    .logo-word { font-size: 1.1rem; }
   }
 </style>
